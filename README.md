@@ -4,6 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/sak32009/unique-id/downloads)](https://packagist.org/packages/sak32009/unique-id)
 [![Latest Unstable Version](https://poser.pugx.org/sak32009/unique-id/v/unstable)](https://packagist.org/packages/sak32009/unique-id)
 [![License](https://poser.pugx.org/sak32009/unique-id/license)](https://packagist.org/packages/sak32009/unique-id)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/c3e0f83acf8c4919a5fc4a756e9d56b7)](https://www.codacy.com/app/Sak32009/unique-id)
 
 ## Description
 
