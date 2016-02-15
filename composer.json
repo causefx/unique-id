@@ -1,0 +1,20 @@
+{
+    "name": "sak32009/unique-id",
+    "description": "Creates unique static ID",
+    "license": "MIT",
+    "require": {
+        "php" : ">=5.4"
+    },
+    "authors": [
+        {
+            "name": "Sak32009",
+            "homepage": "https://github.com/Sak32009",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "sak32009": "src/"
+        }
+    }
+}
