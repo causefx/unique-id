@@ -73,6 +73,16 @@ $uniqueID->setOption('hash_salt', 'my_private_key');
 
 **Note**: See `options` section.
 
+### Add data
+
+For add more data use `$uniqueID->addData(str)`:
+
+```php
+$uniqueID->addData($_SERVER['SCRIPT_NAME']);
+```
+
+**Note**: This makes the ID much safer.
+
 ## Options
 
 **hash_salt** Default: *null*, Type: string
