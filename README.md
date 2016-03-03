@@ -12,7 +12,7 @@ Creates unique static ID.
 
 ## Requirements
 
-* PHP >= `5.4`
+* PHP >= `5.5`
 
 ## Installation
 
@@ -43,6 +43,34 @@ $uniqueID = new sak32009\uniqueID;
 $uniqueID->setOption('hash_salt', 'my_private_key');
 ```
 
+## Example
+
+```php
+$cookie = $_COOKIE['cookie'];
+
+if(strlen($cookie) > 0){
+
+    if($uniqueID->verify($cookie)){
+
+        echo "OK! Hash: " . $cookie;
+
+    }else{
+
+        echo "Hash invalid";
+
+    }
+
+}else{
+
+    $hash = $uniqueID->generateID();
+
+    setcookie('cookie', $hash, (time()+60*60*24*30));
+
+    echo "Reload page";
+
+}
+```
+
 ## Functions
 
 ### Generate ID
@@ -53,15 +81,15 @@ For generate ID use `$uniqueID->generateID()`:
 $uniqueID->generateID();
 ```
 
-### Compare
+### Verify hash
 
-For compare your id with another id use `$uniqueID->compare(anotherID)`:
+For verify hash use `$uniqueID->verify(hash)`:
 
 ```php
-$uniqueID->compare('another_unique_id');
+$uniqueID->verify('$2y$10$pBxDPcYxwy9C/NAhgCuoHun5YeTqY/1CTZBT71R4cY3L8xFys2Q5G');
 ```
 
-**Note**: Use this to check if it has a valid id.
+**Note**: Use this to check if hash corresponds to the user.
 
 ### Set options
 
@@ -91,14 +119,6 @@ See this link [WIKIPEDIA](https://en.wikipedia.org/wiki/Salt_%28cryptography%29)
 
 ```php
 $uniqueID->setOption('hash_salt', 'my_private_key');
-```
-
-**hash_algo** Default: *sha256*, Type: string
-
-See [PHP-HASH-ALGOS](https://secure.php.net/manual/en/function.hash-algos.php)
-
-```php
-$uniqueID->setOption('hash_algo', 'sha256');
 ```
 
 ## License

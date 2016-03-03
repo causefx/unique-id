@@ -6,9 +6,9 @@
  * @description    Creates unique static ID
  * @author         Sak32009 <https://github.com/Sak32009>
  * @copyright      2016, Sak32009
- * @version        1.1.0
+ * @version        2.1.0
  * @license        MIT
- * @require        PHP >= 5.4
+ * @require        PHP >= 5.5
  * @homepage       https://github.com/Sak32009/unique-id
  */
 
@@ -30,14 +30,6 @@ class uniqueID{
          * @default null
          */
         'hash_salt' => null,
-
-        /**
-         * Hash algorithm
-         * See https://secure.php.net/manual/en/function.hash-algos.php
-         * @type string
-         * @default sha256
-         */
-        'hash_algo' => 'sha256'
 
     ];
 
@@ -83,21 +75,20 @@ class uniqueID{
 
         $userData = $this->getUserData();
 
-        return hash($this->options['hash_algo'], $userData);
+        return password_hash($userData, PASSWORD_DEFAULT);
 
     }
 
     /**
-     * Compare your ID with another ID
-     * return true if they are equal
-     * @param string $anotherID Another ID
+     * Verify hash
+     * @param string $hash Hash
      * @return boolean
      */
-    public function compare($anotherID){
+    public function verify($hash){
 
-        $currentID = $this->generateID();
+        $userData = $this->getUserData();
 
-        return $currentID === $anotherID;
+        return password_verify($userData, $hash);
 
     }
 
